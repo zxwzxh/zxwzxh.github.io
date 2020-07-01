@@ -2431,13 +2431,29 @@
   <entry>
     <title>EL和JSTL</title>
     <url>/2020/06/30/EL%E5%92%8CJSTL/</url>
-    <content><![CDATA[<h1 id="EL和JSTL"><a href="#EL和JSTL" class="headerlink" title="EL和JSTL"></a>EL和JSTL</h1><h2 id="EL"><a href="#EL" class="headerlink" title="EL"></a>EL</h2><h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2>]]></content>
+    <content><![CDATA[<h1 id="EL和JSTL"><a href="#EL和JSTL" class="headerlink" title="EL和JSTL"></a>EL和JSTL</h1><h2 id="EL"><a href="#EL" class="headerlink" title="EL"></a>EL</h2><h3 id="EL是什么，有什么作用"><a href="#EL是什么，有什么作用" class="headerlink" title="EL是什么，有什么作用"></a>EL是什么，有什么作用</h3><h3 id="EL表达式搜索域数据的顺序"><a href="#EL表达式搜索域数据的顺序" class="headerlink" title="EL表达式搜索域数据的顺序"></a>EL表达式搜索域数据的顺序</h3><h3 id="EL表达式输出Bean的各种属性"><a href="#EL表达式输出Bean的各种属性" class="headerlink" title="EL表达式输出Bean的各种属性"></a>EL表达式输出Bean的各种属性</h3><h2 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h2>]]></content>
       <categories>
         <category>JavaWeb</category>
       </categories>
       <tags>
         <tag>EL</tag>
         <tag>JSTL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSP</title>
+    <url>/2020/06/30/JSP/</url>
+    <content><![CDATA[<h1 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h1><h2 id="JSP是什么，有什么作用"><a href="#JSP是什么，有什么作用" class="headerlink" title="JSP是什么，有什么作用"></a>JSP是什么，有什么作用</h2><p>JSP：Java Server Page，Java服务器页面。</p>
+<p><strong>作用</strong>：JSP的主要作用就是替代Servlet程序回传HTML页面的数据</p>
+<p>使用Servlet来回传HTML页面，就是在Java程序中写HTML，这既不合适，也不方便。</p>
+<h2 id="JSP的本质"><a href="#JSP的本质" class="headerlink" title="JSP的本质"></a>JSP的本质</h2><p>JSP本质上还是一个Servlet程序！！！</p>
+<p>当<strong>第一次访问</strong>JSP页面时，Tomcat服务器会帮我们把jsp页面翻译成一个Java源文件，并将它编译成为<code>.class</code>字节码文件</p>
+<h2 id="JSP的三种语法"><a href="#JSP的三种语法" class="headerlink" title="JSP的三种语法"></a>JSP的三种语法</h2><h2 id="JSP九大内置对象"><a href="#JSP九大内置对象" class="headerlink" title="JSP九大内置对象"></a>JSP九大内置对象</h2><h2 id="JSP四大域对象"><a href="#JSP四大域对象" class="headerlink" title="JSP四大域对象"></a>JSP四大域对象</h2><h2 id="JSP中out输出和response-getWriter-输出的区别"><a href="#JSP中out输出和response-getWriter-输出的区别" class="headerlink" title="JSP中out输出和response.getWriter()输出的区别"></a>JSP中<code>out</code>输出和<code>response.getWriter()</code>输出的区别</h2><h2 id="JSP的常用标签"><a href="#JSP的常用标签" class="headerlink" title="JSP的常用标签"></a>JSP的常用标签</h2><h2 id="JSP练习题"><a href="#JSP练习题" class="headerlink" title="JSP练习题"></a>JSP练习题</h2>]]></content>
+      <categories>
+        <category>JavaWeb</category>
+      </categories>
+      <tags>
+        <tag>JSP</tag>
       </tags>
   </entry>
 </search>
