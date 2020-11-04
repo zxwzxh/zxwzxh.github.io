@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>十六、SpringBoot与监控管理 | 折木Zxw</title><meta name="description" content="十六、SpringBoot与监控管理"><meta name="author" content="折木Zxw"><meta name="copyright" content="折木Zxw"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="十六、SpringBoot与监控管理"><meta property="og:url" content="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/"><meta property="og:site_name" content="折木Zxw"><meta property="og:description" content="十六、SpringBoot与监控管理"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-09-07T08:50:37.000Z"><meta property="article:modified_time" content="2020-09-07T08:50:37.409Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>十六、SpringBoot与监控管理 | 折木Zxw</title><meta name="description" content="Spring Boot与监控管理官方文档：https:&#x2F;&#x2F;docs.spring.io&#x2F;spring-boot&#x2F;docs&#x2F;current&#x2F;reference&#x2F;html&#x2F;production-ready-features.html 通过引入spring-boot-starter-actuator，可以使用Spring Boot为我们提供的准生产环境下的应用监控和管理功能。我们可以通过HTTP、JMX"><meta name="keywords" content="SpringBoot与监控管理"><meta name="author" content="折木Zxw"><meta name="copyright" content="折木Zxw"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="十六、SpringBoot与监控管理"><meta property="og:url" content="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/"><meta property="og:site_name" content="折木Zxw"><meta property="og:description" content="Spring Boot与监控管理官方文档：https:&#x2F;&#x2F;docs.spring.io&#x2F;spring-boot&#x2F;docs&#x2F;current&#x2F;reference&#x2F;html&#x2F;production-ready-features.html 通过引入spring-boot-starter-actuator，可以使用Spring Boot为我们提供的准生产环境下的应用监控和管理功能。我们可以通过HTTP、JMX"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2020-09-07T08:50:37.000Z"><meta property="article:modified_time" content="2020-10-29T12:48:11.727Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
   document.documentElement.setAttribute('data-theme', 'dark')
   if (document.querySelector('meta[name="theme-color"]') !== null) {
     document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
@@ -52,7 +52,7 @@ if (autoChangeMode === '1') {
 } else {
   if (t === 'dark') activateDarkMode()
   else if (t === 'light') activateLightMode()
-}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="next" title="十五、SpringBoot与开发热部署" href="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E4%BA%94%E3%80%81SpringBoot%E4%B8%8E%E5%BC%80%E5%8F%91%E7%83%AD%E9%83%A8%E7%BD%B2/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="Redis" href="http://zxwzxh.github.io/2020/10/07/Redis/"><link rel="next" title="十五、SpringBoot与开发热部署" href="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E4%BA%94%E3%80%81SpringBoot%E4%B8%8E%E5%BC%80%E5%8F%91%E7%83%AD%E9%83%A8%E7%BD%B2/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
   root: '/',
   algolia: undefined,
   localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
@@ -87,7 +87,7 @@ if (autoChangeMode === '1') {
   isPost: true,
   isHome: false,
   isHighlightShrink: false,
-  isSidebar: false
+  isSidebar: true
   }</script><noscript><style>
 #nav {
   opacity: 1
@@ -95,7 +95,502 @@ if (autoChangeMode === '1') {
 .justified-gallery img{
   opacity: 1
 }
-</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">52</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">68</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">9</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">折木Zxw</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">十六、SpringBoot与监控管理</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-09-07 16:50:37"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-09-07</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-09-07 16:50:37"><i class="fas fa-history fa-fw"></i> 更新于 2020-09-07</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">折木Zxw</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/">http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zxwzxh.github.io" target="_blank">折木Zxw</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/09/07/%E5%8D%81%E4%BA%94%E3%80%81SpringBoot%E4%B8%8E%E5%BC%80%E5%8F%91%E7%83%AD%E9%83%A8%E7%BD%B2/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">十五、SpringBoot与开发热部署</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 折木Zxw</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
+</style></noscript><meta name="generator" content="Hexo 4.2.1"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">63</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">103</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">13</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Boot与监控管理"><span class="toc-number">1.</span> <span class="toc-text">Spring Boot与监控管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#端点（Endpoints）"><span class="toc-number">1.1.</span> <span class="toc-text">端点（Endpoints）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启用端点"><span class="toc-number">1.1.1.</span> <span class="toc-text">启用端点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#暴露端点"><span class="toc-number">1.1.2.</span> <span class="toc-text">暴露端点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保护HTTP端点"><span class="toc-number">1.1.3.</span> <span class="toc-text">保护HTTP端点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置端点缓存时间"><span class="toc-number">1.1.4.</span> <span class="toc-text">配置端点缓存时间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#端点的发现页"><span class="toc-number">1.1.5.</span> <span class="toc-text">端点的发现页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域（CORS）支持"><span class="toc-number">1.1.6.</span> <span class="toc-text">跨域（CORS）支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现自定义端点"><span class="toc-number">1.1.7.</span> <span class="toc-text">实现自定义端点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#健康信息"><span class="toc-number">1.1.8.</span> <span class="toc-text">健康信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自动配置的HealthIndicators"><span class="toc-number">1.1.8.1.</span> <span class="toc-text">自动配置的HealthIndicators</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编写自定义的HealthIndicator"><span class="toc-number">1.1.8.2.</span> <span class="toc-text">编写自定义的HealthIndicator</span></a></li></ol></li></ol></li></ol></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">折木Zxw</a></span><span class="pull-right menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw categories"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">十六、SpringBoot与监控管理</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-09-07 16:50:37"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2020-09-07</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-10-29 20:48:11"><i class="fas fa-history fa-fw"></i> 更新于 2020-10-29</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/Web%E6%A1%86%E6%9E%B6/">Web框架</a><i class="fas fa-angle-right post-meta__separator"></i><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/Web%E6%A1%86%E6%9E%B6/Spring-Boot/">Spring Boot</a></span></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="Spring-Boot与监控管理"><a href="#Spring-Boot与监控管理" class="headerlink" title="Spring Boot与监控管理"></a>Spring Boot与监控管理</h1><p>官方文档：<a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html" target="_blank" rel="noopener">https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html</a></p>
+<p>通过引入<code>spring-boot-starter-actuator</code>，可以使用Spring Boot为我们提供的准生产环境下的应用监控和管理功能。我们可以通过HTTP、JMX、SSH协议来进行操作，自动得到审计、健康及指标信息等。</p>
+<p><strong>步骤</strong>：</p>
+<p>1、引入<code>spring-boot-starter-actuator</code></p>
+<p>2、通过http方式访问监控端点</p>
+<p>3、可进行shutdown（POST提交，此端点默认关闭）</p>
+<p><strong>使用示例</strong></p>
+<p>使用Spring Initializr创建一个Spring Boot项目，添加web、devtools、actuator依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.junit.vintage<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit-vintage-engine<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>编写<code>application.properties</code>配置文件</p>
+<p>如果Spring Initailzr使用的阿里云的地址（<a href="https://start.aliyun.com），下面的配置文件则是自动创建的" target="_blank" rel="noopener">https://start.aliyun.com），下面的配置文件则是自动创建的</a></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 应用名称</span></span><br><span class="line"><span class="meta">spring.application.name</span>=<span class="string">spring-boot-08-actuator</span></span><br><span class="line"><span class="comment"># Actuator Web 访问端口</span></span><br><span class="line"><span class="meta">management.server.port</span>=<span class="string">8081</span></span><br><span class="line"><span class="meta">management.endpoints.jmx.exposure.include</span>=<span class="string">*</span></span><br><span class="line"><span class="meta">management.endpoints.web.exposure.include</span>=<span class="string">*</span></span><br><span class="line"><span class="meta">management.endpoint.health.show-details</span>=<span class="string">always</span></span><br><span class="line"><span class="comment"># 应用服务 WEB 访问端口</span></span><br><span class="line"><span class="meta">server.port</span>=<span class="string">8080</span></span><br><span class="line"><span class="comment"># spring 静态资源扫描路径</span></span><br><span class="line"><span class="meta">spring.resources.static-locations</span>=<span class="string">classpath:/static/</span></span><br></pre></td></tr></table></figure>
+
+<p>启动Spring Boot项目，访问<a href="http://localhost:8081/actuator" target="_blank" rel="noopener">http://localhost:8081/actuator</a></p>
+<h2 id="端点（Endpoints）"><a href="#端点（Endpoints）" class="headerlink" title="端点（Endpoints）"></a>端点（Endpoints）</h2><p>Actuator endpoints（执行器端点）可用于监控应用以及与应用进行交互，Spring Boot包含很多内置的端点，你也可以添加自己的。例如，health端点提供了应用的基本健康信息。</p>
+<p>每个端点都可以启用或者禁用，这控制着端点是否被创建，以及它的bean是否存在于应用程序上下文中。要远程访问端点，还必须通过JMX或HTTP进行暴漏，大部分应用选择HTTP，端点的ID映射到一个<code>/actuator</code>前缀的URL。例如，health端点默认映射到<code>/actuator/health</code>。</p>
+<p>下面的端点都是可用的：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>描述</th>
+<th>默认启用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>auditevents</td>
+<td>显示当前应用程序的审计事件信息</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>beans</td>
+<td>显示一个应用中<code>所有Spring Beans</code>的完整列表</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>显示<code>配置类和自动配置类</code>(configuration and auto-configuration</td>
+<td>classes)的状态及它们被应用或未被应用的原因</td>
+</tr>
+<tr>
+<td>configprops</td>
+<td>显示一个所有<code>@ConfigurationProperties</code>的集合列表</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>env</td>
+<td>显示来自Spring的 <code>ConfigurableEnvironment</code>的属性</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>flyway</td>
+<td>显示数据库迁移路径，如果有的话</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>health</td>
+<td>显示应用的<code>健康信息</code>（当使用一个未认证连接访问时显示一个简单</td>
+<td>的’status’，使用认证连接访问则显示全部信息详情）</td>
+</tr>
+<tr>
+<td>info</td>
+<td>显示任意的<code>应用信息</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>liquibase</td>
+<td>展示任何Liquibase数据库迁移路径，如果有的话</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td>展示当前应用的<code>metrics</code>信息</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>mappings</td>
+<td>显示一个所有<code>@RequestMapping</code>路径的集合列表</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>scheduledtasks</td>
+<td>显示应用程序中的<code>计划任务</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>sessions</td>
+<td>允许从Spring会话支持的会话存储中检索和删除(retrieval and deletion)</td>
+<td>用户会话。使用Spring Session对反应性Web应用程序的支持时不可用。</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>允许应用以优雅的方式关闭（默认情况下不启用）</td>
+<td>No</td>
+</tr>
+<tr>
+<td>threaddump</td>
+<td>执行一个线程dump</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<p>如果使用web应用（Spring MVC，Spring WebFlux或者Jersey），你还可以使用以下端点：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>描述</th>
+<th>默认启用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>heapdump</td>
+<td>返回一个GZip压缩的<code>hprof</code>堆dump文件</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>jolokia</td>
+<td>通过HTTP暴露<code>JMX beans</code>（当Jolokia在类路径上时，WebFlux不可用）</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>返回<code>日志文件内容</code>（如果设置了logging.file或logging.path属性的话），支持使用HTTP <strong>Range</strong>头接收日志文件内容的部分信息</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>prometheus</td>
+<td>以可以被Prometheus服务器抓取的格式显示<code>metrics</code>信息</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<h3 id="启用端点"><a href="#启用端点" class="headerlink" title="启用端点"></a>启用端点</h3><p>默认情况下，除了<strong>shutdown</strong>以外的所有端点均已启用。要配置单个端点的启用：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">management.endpoint.&lt;id&gt;.enabled</span></span><br></pre></td></tr></table></figure>
+
+<p>例如，启用shutdown端点：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoint.shutdown.enabled</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<p>另外可以通过<code>management.endpoints.enabled-by-default</code>来修改全局端口默认配置，以下示例启用info端点并禁用所有其它端点：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoints.enabled-by-default</span>=<span class="string">false</span></span><br><span class="line"><span class="meta">management.endpoint.info.enabled</span>=<span class="string">true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>禁用端点将从应用程序上下文中完全删除。如果你只是想要更改端点暴露的技术，请使用<code>include</code>和<code>exclude</code>属性</p>
+</blockquote>
+<h3 id="暴露端点"><a href="#暴露端点" class="headerlink" title="暴露端点"></a>暴露端点</h3><p>由于端点可能包含敏感信息，因此应仔细考虑何时公开（暴露）它们。下表显示了内置端点的默认曝光：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>JMX</th>
+<th>Web</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>auditevents</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>beans</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>conditions</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>configprops</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>env</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>flyway</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>health</td>
+<td>Yes</td>
+<td><code>Yes</code></td>
+</tr>
+<tr>
+<td>heapdump</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr>
+<td>httptrace</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>info</td>
+<td>Yes</td>
+<td><code>Yes</code></td>
+</tr>
+<tr>
+<td>jolokia</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>logfile</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>loggers</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>liquibase</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>metrics</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>mappings</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>prometheus</td>
+<td>N/A</td>
+<td>No</td>
+</tr>
+<tr>
+<td>scheduledtasks</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>sessions</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>threaddump</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+</tbody></table>
+<p>要更改公开哪些端点，请使用以下技术特定的<code>include</code>和<code>exclude</code>属性：</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>management.endpoints.jmx.exposure.exclude</td>
+<td></td>
+</tr>
+<tr>
+<td>management.endpoints.jmx.exposure.include</td>
+<td>*</td>
+</tr>
+<tr>
+<td>management.endpoints.web.exposure.exclude</td>
+<td></td>
+</tr>
+<tr>
+<td>management.endpoints.web.exposure.include</td>
+<td>info, health</td>
+</tr>
+</tbody></table>
+<p>include属性列出了公开端点的ID，exclude属性列出了不应该公开的端点的ID</p>
+<p>exclude属性优于include属性，include和exclude属性都可以使用端点ID列表进行配置。</p>
+<blockquote>
+<p>注意：</p>
+<p>这里的优先级是指同一端点ID，同时出现在include属性表和exclude属性表中，exclude属性优先于include属性，即此端点没有暴露</p>
+</blockquote>
+<p>例如，要停止通过JMX公开所有端点并仅公开health和info端点，请使用如下属性</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoints.jmx.exposure.include</span>=<span class="string">health,info</span></span><br></pre></td></tr></table></figure>
+
+<p><code>*</code>可以用来选择所有端点。例如，要通过HTTP公开除了<code>env</code>和<code>beans</code>端点之外的所有内容，请使用以下属性：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoints.web.exposure.include</span>=<span class="string">*</span></span><br><span class="line"><span class="meta">management.endpoints.web.exposure.exclude</span>=<span class="string">env,beans</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p><code>*</code>在YAML中有特殊含义，如果需要使用需要加上引号</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">management:</span> </span><br><span class="line">  <span class="attr">endpoints:</span> </span><br><span class="line">    <span class="attr">web:</span> </span><br><span class="line">      <span class="attr">exposure:</span> </span><br><span class="line">        <span class="attr">include:</span> <span class="string">'*'</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="保护HTTP端点"><a href="#保护HTTP端点" class="headerlink" title="保护HTTP端点"></a>保护HTTP端点</h3><p>你应该像对待其它任何敏感URL一样，小心保护HTTP端点的安全。如果存在Spring Security，则默认情况下使用Spring Security的内容协商策略来保护端点安全。例如，如果你希望为HTTP端点配置自定义安全性，只允许具有特定角色的用户访问它们，Spring Boot提供了一些方便的RequestMatcher对象，可以将它们与Spring Security结合使用。</p>
+<p>典型的Spring Security配置可能类似于以下示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>(proxyBeanMethods = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActuatorSecurity</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests((requests) -&gt;</span><br><span class="line">                requests.anyRequest().hasRole(<span class="string">"ENDPOINT_ADMIN"</span>));</span><br><span class="line">        http.httpBasic();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的示例使用<code>EndpointRequest.toAnyEndpoint()</code>将请求与所有端点进行匹配，然后确保所有端点都具有<strong>ENDPOINT_ADMIN</strong>角色。详细信息请参考API文档（<a href="https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/actuator-api/html/" target="_blank" rel="noopener">HTML</a>或者<a href="https://docs.spring.io/spring-boot/docs/2.3.4.RELEASE/actuator-api/pdf/spring-boot-actuator-web-api.pdf" target="_blank" rel="noopener">PDF</a>）。</p>
+<p>如果你的应用部署在防火墙后，你可能更喜欢所有执行器端点都可以在无需验证的情况下进行访问。你可以通过更改<code>management.endpoints.web.exposure.include</code>属性来完成此操作，如下所示：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoints.web.exposure.include</span>=<span class="string">*</span></span><br></pre></td></tr></table></figure>
+
+<p>此外，如果存在Spring Security，则需要添加自定义安全配置，以允许对端点进行未经身份验证，如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>(proxyBeanMethods = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ActuatorSecurity</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http.requestMatcher(EndpointRequest.toAnyEndpoint()).authorizeRequests((requests) -&gt;</span><br><span class="line">            requests.anyRequest().permitAll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="配置端点缓存时间"><a href="#配置端点缓存时间" class="headerlink" title="配置端点缓存时间"></a>配置端点缓存时间</h3><p>对于不带任何参数的读取操作，端点自动缓存对其响应。要配置端点缓存响应的时间，请使用<code>cache.time-live</code>属性。下面的配置将<code>beans</code>端点缓存的生存时间设置为10秒：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoint.beans.cache.time-live</span>=<span class="string">10s</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：</p>
+<p>在进行认证的HTTP请求时，Principal将被视为端点的输入，因此不会缓存响应</p>
+</blockquote>
+<h3 id="端点的发现页"><a href="#端点的发现页" class="headerlink" title="端点的发现页"></a>端点的发现页</h3><p>端点的发现页就是各个端点的访问路径，默认情况下发现页可以通过<code>/actuator</code>访问。下面是访问<a href="http://localhost:8080/actuator的结果：" target="_blank" rel="noopener">http://localhost:8080/actuator的结果：</a></p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/zxwscoffee/img/raw/master/img/image-20201028194931796.png" alt="image-20201028194931796"></p>
+<p>发现也的路径和进出路劲有关，例如通过如下配置设置基础路径：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置基础路径</span></span><br><span class="line"><span class="meta">management.endpoints.web.base-path</span>=<span class="string">/management</span></span><br></pre></td></tr></table></figure>
+
+<p>此时需要访问<code>/management</code>才能够访问到发现页。但是当基础路径设置为<code>/</code>时，需要禁用发现页面以防止与其他映射发生冲突的可能性。</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#禁用发现页</span></span><br><span class="line"><span class="meta">management.endpoints.enabled-by-default</span>=<span class="string">false</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="跨域（CORS）支持"><a href="#跨域（CORS）支持" class="headerlink" title="跨域（CORS）支持"></a>跨域（CORS）支持</h3><p>跨域资源共享（Cross-origin resource sharing，CORS）是W3C规范，允许你以灵活的方式指定授权哪种跨域请求。如果你使用Spring MVC或者Spring Flux，则可以配置Actuator的Web端点来支持这些场景。</p>
+<p>默认情况下，CORS处于禁用状态，只有在设置了<code>management.endpoints.web.cors.allowed-origins</code>属性后才能启用。以下配置允许来自<code>example.com</code>域的GET和POST调用：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoints.web.cors.allowed-origins</span>=<span class="string">http://example.com</span></span><br><span class="line"><span class="meta">management.endpoints.web.cors.allowed-method</span>=<span class="string">GET,POST</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>请参考<a href="https://github.com/spring-projects/spring-boot/blob/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/endpoint/web/CorsEndpointProperties.java" target="_blank" rel="noopener">CorsEndpointProperties</a>来获取完整的选项列表</p>
+</blockquote>
+<h3 id="实现自定义端点"><a href="#实现自定义端点" class="headerlink" title="实现自定义端点"></a>实现自定义端点</h3><p>如果在一个Bean中使用@Endpoint注解标注，则其中任何使用@ReadOperation、@WriteOperation或者@DeleteOperation注释的方法都会通过JMX暴露，并且也可以通过HTTP在Web应用程序中暴露。也可以使用Jersey、Spring MVC或Spring WebFlux通过HTTP暴露端点。</p>
+<p><strong>使用示例</strong></p>
+<p><code>CustomData</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomData</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line">    <span class="keyword">private</span> Integer number;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"CustomData&#123;"</span> +</span><br><span class="line">                <span class="string">"message='"</span> + message + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", number="</span> + number +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMessage</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNumber</span><span class="params">(Integer number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.number = number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomData</span><span class="params">(String message, Integer number)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">        <span class="keyword">this</span>.number = number;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CustomData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>CustomEndpoint</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Endpoint</span>(id = <span class="string">"customEndpoint"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomEndpoint</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ReadOperation</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CustomData <span class="title">getCustomData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> CustomData(<span class="string">"test"</span>, <span class="number">5</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>启动项目后访问：<a href="http://localhost:8081/actuator/customEndpoint，结果如下：" target="_blank" rel="noopener">http://localhost:8081/actuator/customEndpoint，结果如下：</a></p>
+<p><img src= "/img/loading.gif" data-src="https://gitee.com/zxwscoffee/img/raw/master/img/image-20201028220730195.png" alt="image-20201028220730195"></p>
+<p>当然，也可以使用@JmxEndpoint或者@WebEndpoint，将端点只暴露在JMX或者HTTP中。</p>
+<h3 id="健康信息"><a href="#健康信息" class="headerlink" title="健康信息"></a>健康信息</h3><p>你可以使用健康信息来检查你正在运行的应用的状态。监控软件通常使用它在生产系统出现故障时向某人发出警报。<code>health</code>端点暴露的信息取决于<code>management.endpoint.health.show-details</code>和<code>management.endpoint.health.show-components</code>属性，这两个属性的取值如下：</p>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>never</code></td>
+<td align="left">永远不显示细节</td>
+</tr>
+<tr>
+<td align="left"><code>when-authorized</code></td>
+<td align="left">详细信息仅向授权用户显示。授权角色可以使用<code>management.endpoint.health.roles</code>进行配置。</td>
+</tr>
+<tr>
+<td align="left"><code>always</code></td>
+<td align="left">详细信息显示给所有用户。</td>
+</tr>
+</tbody></table>
+<p>默认值为<code>never</code>。当一个用户担任了端点的一个或者多个角色，那么它就被视为已授权的用户。如果端点没有配置角色（默认情况），则所有通过认证的用户均被视为已授权。可以使用<code>management.endpoint.health.roles</code>属性配置角色。</p>
+<p>健康信息是从<code>HealthContributorRegistry</code>（默认情况下，所有的<code>HealthContributor</code>示例都定义在你的<code>ApplicationContext</code>容器中）的内容中收集的。Spring Boot中包含了许多自动配置的<code>HealthContributor</code>，你也可以自定义<code>HealthContributor</code></p>
+<p><code>HealthContributor</code>可以是<code>HealthIndicator</code>或<code>CompositeHealthContributor</code>。<code>HealthIndicator</code>提供实际的健康信息，包括状态；<code>CompositeHealthContributor</code>提供了其他<code>HealthContributor</code>的组合。二者合起来，构成一个树形结构来代表整个系统的健康状况。</p>
+<h4 id="自动配置的HealthIndicators"><a href="#自动配置的HealthIndicators" class="headerlink" title="自动配置的HealthIndicators"></a>自动配置的HealthIndicators</h4><p>下面的<code>HealthIndicator</code>会在合适的时候通过Spring Boot自动配置。你通过<code>management.health.key.enabled</code>属性来开启/禁用指定的indicator，<code>key</code>的值、对应的indicator以及描述如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">对应的Indicator</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>cassandra</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/cassandra/CassandraHealthIndicator.java" target="_blank" rel="noopener"><code>CassandraHealthIndicator</code></a></td>
+<td align="left">检查Cassandra数据库是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>couchbase</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/couchbase/CouchbaseHealthIndicator.java" target="_blank" rel="noopener"><code>CouchbaseHealthIndicator</code></a></td>
+<td align="left">检查Couchbase集群是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>datasource</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/jdbc/DataSourceHealthIndicator.java" target="_blank" rel="noopener"><code>DataSourceHealthIndicator</code></a></td>
+<td align="left">检查是否可否可以连接数据源</td>
+</tr>
+<tr>
+<td align="left"><code>diskspace</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/system/DiskSpaceHealthIndicator.java" target="_blank" rel="noopener"><code>DiskSpaceHealthIndicator</code></a></td>
+<td align="left">检查磁盘空间是否不足</td>
+</tr>
+<tr>
+<td align="left"><code>elasticsearch</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/elasticsearch/ElasticsearchRestHealthIndicator.java" target="_blank" rel="noopener"><code>ElasticsearchRestHealthIndicator</code></a></td>
+<td align="left">检查Elasticsearch集群是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>hazelcast</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/hazelcast/HazelcastHealthIndicator.java" target="_blank" rel="noopener"><code>HazelcastHealthIndicator</code></a></td>
+<td align="left">检查Hazelcast服务是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>influxdb</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/influx/InfluxDbHealthIndicator.java" target="_blank" rel="noopener"><code>InfluxDbHealthIndicator</code></a></td>
+<td align="left">检查InfluxDB服务是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>jms</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/jms/JmsHealthIndicator.java" target="_blank" rel="noopener"><code>JmsHealthIndicator</code></a></td>
+<td align="left">检查JMS代理是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>ldap</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/ldap/LdapHealthIndicator.java" target="_blank" rel="noopener"><code>LdapHealthIndicator</code></a></td>
+<td align="left">检查LDAP服务是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>mail</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/mail/MailHealthIndicator.java" target="_blank" rel="noopener"><code>MailHealthIndicator</code></a></td>
+<td align="left">检查Mail服务是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>mongo</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/mongo/MongoHealthIndicator.java" target="_blank" rel="noopener"><code>MongoHealthIndicator</code></a></td>
+<td align="left">检查Mongo数据库是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>neo4j</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/neo4j/Neo4jHealthIndicator.java" target="_blank" rel="noopener"><code>Neo4jHealthIndicator</code></a></td>
+<td align="left">检查Neo4j数据库是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>ping</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/health/PingHealthIndicator.java" target="_blank" rel="noopener"><code>PingHealthIndicator</code></a></td>
+<td align="left">总是以<code>UP</code>响应</td>
+</tr>
+<tr>
+<td align="left"><code>rabbit</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/amqp/RabbitHealthIndicator.java" target="_blank" rel="noopener"><code>RabbitHealthIndicator</code></a></td>
+<td align="left">检查Rabbit服务是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>redis</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/redis/RedisHealthIndicator.java" target="_blank" rel="noopener"><code>RedisHealthIndicator</code></a></td>
+<td align="left">检查Redist服务是否启动</td>
+</tr>
+<tr>
+<td align="left"><code>solr</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/solr/SolrHealthIndicator.java" target="_blank" rel="noopener"><code>SolrHealthIndicator</code></a></td>
+<td align="left">检查Solr服务是否启动</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>你可以通过<code>management.health.defaults.enabled</code>属性来禁用它们！</p>
+</blockquote>
+<p>还有一些可用但是默认情况下不启动的<code>HealthIndicator</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">Key</th>
+<th align="left">对应的Indicator</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>livenessstate</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/availability/LivenessStateHealthIndicator.java" target="_blank" rel="noopener"><code>LivenessStateHealthIndicator</code></a></td>
+<td align="left">暴露<code>Liveness</code>应用的可用性状态</td>
+</tr>
+<tr>
+<td align="left"><code>readinessstate</code></td>
+<td align="left"><a href="https://github.com/spring-projects/spring-boot/tree/v2.3.4.RELEASE/spring-boot-project/spring-boot-actuator/src/main/java/org/springframework/boot/actuate/availability/ReadinessStateHealthIndicator.java" target="_blank" rel="noopener"><code>ReadinessStateHealthIndicator</code></a></td>
+<td align="left">暴露<code>Readiness</code>应用的可用性状态</td>
+</tr>
+</tbody></table>
+<h4 id="编写自定义的HealthIndicator"><a href="#编写自定义的HealthIndicator" class="headerlink" title="编写自定义的HealthIndicator"></a>编写自定义的HealthIndicator</h4><p>要提供自定义的健康信息，你需要在容器中注入一个<code>HealthIndicator</code>类型的Spring Bean。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">HealthIndicator</span> <span class="keyword">extends</span> <span class="title">HealthContributor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Return an indication of health.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> includeDetails if details should be included or removed</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> the health</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@since</span> 2.2.0</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">default</span> Health <span class="title">getHealth</span><span class="params">(<span class="keyword">boolean</span> includeDetails)</span> </span>&#123;</span><br><span class="line">		Health health = health();</span><br><span class="line">		<span class="keyword">return</span> includeDetails ? health : health.withoutDetails();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Return an indication of health.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> the health</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function">Health <span class="title">health</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.boot.actuate.health.Health;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.actuate.health.HealthIndicator;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyHealthIndicator</span> <span class="keyword">implements</span> <span class="title">HealthIndicator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Health <span class="title">health</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> errorCode = check(); <span class="comment">// perform some specific health check</span></span><br><span class="line">        <span class="keyword">if</span> (errorCode != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">//设置状态和Detail</span></span><br><span class="line">            <span class="keyword">return</span> Health.down().withDetail(<span class="string">"Error Code"</span>, errorCode).build();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Health.up().build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">折木Zxw</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/">http://zxwzxh.github.io/2020/09/07/%E5%8D%81%E5%85%AD%E3%80%81SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zxwzxh.github.io" target="_blank">折木Zxw</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/SpringBoot%E4%B8%8E%E7%9B%91%E6%8E%A7%E7%AE%A1%E7%90%86/">SpringBoot与监控管理</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/07/Redis/"><img class="prev-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Redis</div></div></a></div><div class="next-post pull-right"><a href="/2020/09/07/%E5%8D%81%E4%BA%94%E3%80%81SpringBoot%E4%B8%8E%E5%BC%80%E5%8F%91%E7%83%AD%E9%83%A8%E7%BD%B2/"><img class="next-cover" data-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">十五、SpringBoot与开发热部署</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 折木Zxw</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a href="https://github.com/wzpan/hexo-generator-search" target="_blank" rel="noopener" style="color:#49B1F5;">hexo-generator-search</a>
  <span>提供支持</span></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div class="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
   tex2jax: {
     inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
